@@ -4,21 +4,21 @@
 		<div>
 			<label for="name" class="block mb-1 ml-1">Nombre</label>
 			<input formControlName="name" id="name" type="text" placeholder="Nombre" required="" class="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400 bg-gray-800">
-            <div>
+            <div *ngIf="formContact.get('name')?.invalid">
                 <p class="text-center block mb-1 ml-1 text-red-600">Debe Tener como mínimo 12 caracteres</p>
             </div>
         </div>
 		<div>
 			<label for="email" class="block mb-1 ml-1">Email</label>
 			<input formControlName="email" id="email" type="email" placeholder="email@dominio.com" required="" class="block w-full p-2 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400 bg-gray-800">
-            <div>
+            <div *ngIf="formContact.get('email')?.invalid">
                 <p class="text-center block mb-1 ml-1 text-red-600">El Email no es Valido</p>
             </div>
         </div>
 		<div>
 			<label for="message" class="block mb-1 ml-1">Mensaje</label>
 			<textarea formControlName="message" id="message" type="text" placeholder="Tu Mensaje" class="block w-full p-2 rounded autoexpand focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400 bg-gray-800"></textarea>
-            <div>
+            <div *ngIf="formContact.get('message')?.invalid">
                 <p class="text-center block mb-1 ml-1 text-red-600">EL Mensaje no puede quedar vació</p>
             </div>
         </div>
