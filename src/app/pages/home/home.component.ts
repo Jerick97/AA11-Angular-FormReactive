@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  correcto : boolean = false;
   public formContact!: FormGroup;
   constructor(private formBuilder:FormBuilder) { }
 
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
       ]],
       email: ['', [
         Validators.required,
-        Validators.email
+        Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
       ]],
       message: ['', [
         Validators.required,
@@ -30,6 +31,16 @@ export class HomeComponent implements OnInit {
   }
 
   send(): any{
-    console.log(this.formContact.value)
+    console.log(this.formContact.value);
+
+    //Después de 3 Segundos, Reinicia el Form
+    setTimeout(() => {
+      this.correcto = false;
+      this.formContact.reset();
+    }, 3000);
+
+    this.correcto = true;
   }
+  
+  
 }
